@@ -1,0 +1,72 @@
+<% layout('./template/boilerplate') %>
+<% let length="https://in.indeed.com/"; %> 
+
+<div class="container mt-5 ">
+    <div class="card rounded bg-light col-sm-12 shadow ">
+        <div class="card-body">
+            <div class="card-subtitle mx-3">
+                <h3 class="fs-4 fw-bolder">Search</h3>
+            </div>
+          
+            <form action="/"  method="get">
+                <div class="form-floating mb-3">
+                    <input type="text" name="search"  class="form-control border-bottom " id="floatingInput" placeholder="text">
+                    <label for="floatingInput" class="overflow-hidden pt-1 fs-6 mt-0
+                    ">&#128269; Search for Company/Role/Location</label>
+                  </div>
+            </form>
+          
+        </div>
+    </div>
+
+  <% if(search) {%> 
+    <% for(let lists of foundjobs){   %> 
+      
+        <div class="card shadow mb-3 mt-3 col-sm-12 col-lg-12">
+         <div class="card-body">
+             <div class="card-title"><h5> <%-lists.job_title  %> </h5>
+                 <h6>Company Name: <strong><%-lists.company_name.slice(length.length)  %></strong> </h6> 
+             </div>
+             <div class="card-subtitle"> <h6 class="text-muted mb-3"><%- lists.pay  %> </h6></div>
+             <p>
+                 <!-- <span class="d-inline-block text-truncate text-wrap" style=" text-overflow: ellipsis; overflow:hiden;   max-height:50px">
+                     <%- lists.job_description_html.slice(10) %>  %> 
+                   </span> -->
+             </p>
+             <a href="/api/jobs/<%-lists._id  %>"  class="card-link">click here</a>
+ 
+ 
+     
+         </div>
+ 
+     </div>
+
+ <% } %> 
+  
+    <%  } else {%>
+        <% for(let lists of result){   %> 
+      
+            <div class="card shadow mb-3 mt-3 col-sm-12 col-lg-12">
+             <div class="card-body">
+                 <div class="card-title"><h5> <%-lists.job_title  %> </h5>
+                     <h6>Company Name: <strong><%-lists.company_name.slice(length.length)  %></strong> </h6> 
+                 </div>
+                 <div class="card-subtitle"> <h6 class="text-muted mb-3"><%- lists.pay  %> </h6></div>
+                 <p>
+                     <!-- <span class="d-inline-block text-truncate text-wrap" style=" text-overflow: ellipsis; overflow:hiden;   max-height:50px">
+                         <%- lists.job_description_html.slice(10) %>  %> 
+                       </span> -->
+                 </p>
+                 <a href="/api/jobs/<%-lists._id  %>"  class="card-link">click here</a>
+     
+     
+         
+             </div>
+     
+         </div>
+    
+     <% } %> 
+        <% } %>  
+</div>
+
+

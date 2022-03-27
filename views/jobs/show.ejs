@@ -1,0 +1,26 @@
+<% layout('./template/boilerplate') %>
+<% let length="https://in.indeed.com/"; %> 
+
+<div class="container   justify-content-start mt-3  ">
+    <div class="card shadow mb-3 fs-sm-6 col-sm-6 col-lg-8">
+     <div class="card-body">
+         <div class="card-title mb-5"><h5> <%-job.job_title  %> </h5>
+             <h6>Company Name: <strong><%-job.company_name.slice(length.length)  %></strong> </h6> 
+         </div>
+         <div class="card-subtitle"> <h6 class="text-muted mb-3"><%- job.pay  %> </h6></div>
+         <p class="lh-base">
+            <%- job.job_description_html %> 
+             <!-- <span class="d-inline-block text-truncate text-wrap" style=" text-overflow: ellipsis; overflow:hiden;   max-height:50px">
+                  %> 
+               </span> -->
+         </p>
+         <a href="<%-job.url %>" target="_blank"  class="card-link "><button class="btn btn-primary  ">
+             Apply now
+         </button></a>
+
+
+ 
+     </div>
+
+ </div>
+</div>
