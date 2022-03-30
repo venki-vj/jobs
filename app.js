@@ -1,6 +1,6 @@
 const express = require('express');
 const jobsRoute= require('./routes/jobs');
-
+var favicon = require('serve-favicon')
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate=require('ejs-mate');
@@ -13,7 +13,11 @@ app.set('view engine', 'ejs')
 app.set('views',path.join(__dirname, '/views'))
 app.engine('ejs',ejsMate);
 
+
+app.use(req,res,next)
+
 app.use('/api/jobs',jobsRoute)
+var _favicon = favicon(path.join(__dirname, 'public', 'degree.ico'))
 
 url='mongodb+srv://dbUser:dbUser@joblist.qq5pq.mongodb.net/JobApp?retryWrites=true&w=majority'
 mongoose
